@@ -2,7 +2,7 @@
 
 ## Prerequisites
 
-You most already have a working environment w/ Node, NPM, Git & Shopify-cli.
+You most already have a working environment w/ Node(NVM 22), NPM, Git & Shopify-cli.
 If not, please install them first.
 
 ## Installation
@@ -12,7 +12,7 @@ If not, please install them first.
 1. Initialize Vite Project
 
 ```sh
-npm create vite
+npm create vite@latest
 ```
 
 - _NOTE:_ Select React and choose Javascript or Typescript as per your preference.
