@@ -74,9 +74,9 @@ export default defineConfig({
 
 - _NOTE:_ update the file input to be reflrected on the assets folders.
 
-### Step 5: Configure Tailwind CSS
+### - Step 5: Configure Tailwind CSS -  remove
 
-1. Update the tailwind.config.js file
+1. Update/Create the tailwind.config.js file
 
 ```js
 /** @type {import('tailwindcss').Config} */
@@ -122,6 +122,24 @@ touch src/tailwind.css
 
 ```css
 @import "tailwindcss" prefix(tw);
+
+@source "../blocks/**/*.{liquid,json}";
+@source "../config/**/*.json";
+@source "../layout/**/*.liquid";
+@source "../assets/**/*.liquid";
+@source "../sections/**/*.liquid";
+@source "../snippets/**/*.liquid";
+@source "../templates/**/*.{liquid,json}";
+@source "../templates/customers/**/*.liquid";
+
+@theme {
+  --breakpoint-sm: 320px;
+  --breakpoint-md: 750px;
+  --breakpoint-lg: 990px;
+  --breakpoint-xl: 1200px;
+  --breakpoint-2xl: initial;
+  --breakpoint-xxl: 1400px;
+}
 ```
 
 - _NOTE:_ The prefix (tw) is the prefix that you want to use on your project. Classes will be prefixed with 'tw:' > `tw:border-8 tw:border-red-500`
@@ -170,7 +188,7 @@ npm install
 
 ### Step 10: Update Shopify Project Files
 
-1. Update theme.liquid for Tailwind CSS
+1. Update layout/theme.liquid for Tailwind CSS
 
 ```liquid
 {% comment %} Tailwind CSS Configs {% endcomment %}
@@ -263,21 +281,21 @@ touch .prettierrc
 {
   "plugins": ["@shopify/prettier-plugin-liquid"],
   // testing
-  "overrides": [
+  overrides: [
     {
-      "files": "*.liquid",
-      "options": {
-        "parser": "liquid-parser"
-      }
-    }
-  ]
+      files: "*.liquid",
+      options: {
+        parser: "liquid-parser",
+      },
+    },
+  ],
 }
 ```
 
 4. Run Prettier on command
 
 ```ssh
-npm run prettier -- path/to/file.liquid --write
+npx prettier -- path/to/file.liquid --write
 ```
 
 - **NOTE:** Shopify Prettier Support [documentation](https://shopify.dev/docs/themes/tools/liquid-prettier-plugin)
